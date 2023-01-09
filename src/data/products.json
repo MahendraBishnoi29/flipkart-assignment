@@ -1,0 +1,82 @@
+[
+  {
+    "id": 1,
+    "name": "Men Sweatshirt",
+    "price": 500,
+    "size": "M",
+    "brand": "Puma",
+    "idealFor": "Men"
+  },
+  {
+    "id": 2,
+    "name": "Product 2",
+    "price": 50,
+    "size": "M",
+    "brand": "Brand B",
+    "idealFor": "Women"
+  },
+  {
+    "id": 3,
+    "name": "Product 3",
+    "price": 150,
+    "size": "L",
+    "brand": "Brand A",
+    "idealFor": "Men"
+  },
+  {
+    "id": 4,
+    "name": "Product 4",
+    "price": 75,
+    "size": "XL",
+    "brand": "Brand C",
+    "idealFor": "Women"
+  },
+  {
+    "id": 5,
+    "name": "Product 5",
+    "price": 125,
+    "size": "S",
+    "brand": "Brand B",
+    "idealFor": "Men"
+  },
+  {
+    "id": 6,
+    "name": "Product 6",
+    "price": 100,
+    "size": "M",
+    "brand": "Brand A",
+    "idealFor": "Women"
+  },
+  {
+    "id": 7,
+    "name": "Product 6",
+    "price": 100,
+    "size": "M",
+    "brand": "Brand A",
+    "idealFor": "Women"
+  },
+  {
+    "id": 8,
+    "name": "Product 6",
+    "price": 100,
+    "size": "M",
+    "brand": "Brand A",
+    "idealFor": "Women"
+  },
+  {
+    "id": 9,
+    "name": "Product 6",
+    "price": 100,
+    "size": "M",
+    "brand": "Brand A",
+    "idealFor": "Women"
+  },
+  {
+    "id": 10,
+    "name": "Product 6",
+    "price": 100,
+    "size": "M",
+    "brand": "Brand A",
+    "idealFor": "Women"
+  }
+]
