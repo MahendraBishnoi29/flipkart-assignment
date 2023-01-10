@@ -1,7 +1,11 @@
 import React from "react";
 
-const Sidebar = () => {
-  return <div>Sidebar</div>;
-};
+function Sidebar() {
+  return (
+    <aside className="w-[22%]">
+      <div className="rounded bg-gray-50">Sidebar content goes here</div>
+    </aside>
+  );
+}
 
 export default Sidebar;
