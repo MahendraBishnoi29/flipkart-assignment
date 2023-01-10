@@ -2,20 +2,20 @@ import React from "react";
 
 const ProductCard = ({ products }) => {
   return (
-    <div className="w-3/4 flex">
+    <div className="w-3/4 max-h-[90vh] flex flex-wrap gap-1 p-1 overflow-y-scroll">
       {products?.map((product) => (
         <div
-          className="container mx-auto p-9 bg-white max-w-sm rounded-2xl overflow-hidden shadow-xl"
+          className="w-1/4 mx-auto p-1 cursor-pointer mb-3 bg-white rounded-2xl overflow-hidden shadow-xl"
           key={product.id}
         >
           <img
             src={product.image}
-            className="singlecard__img"
+            className="h-64 w-64 object-contain"
             alt={product.name}
           />{" "}
-          <div className="singlecard__data">
-            <span className="singlecard__brand">{product.brand}</span>
-            <span className="singlecard__name">
+          <div className="flex flex-col p-1">
+            <p className="font-medium text-gray-400">{product.brand}</p>
+            <span className="text-lg">
               {product.name?.length < 23 ? (
                 product.name
               ) : (
@@ -25,11 +25,9 @@ const ProductCard = ({ products }) => {
                 </span>
               )}
             </span>
-            <span className="singlecard__data--price">
-              <span style={{ fontWeight: 500 }}>₹{product?.price}</span>{" "}
-            </span>
+            <span className="font-bold">₹{product?.price}</span>{" "}
             <div>
-              <span className="singlecard__brand">SIZE: </span>
+              <span className="font-medium text-gray-500">SIZE: </span>
               {product.size.map((m) => `${m}, `)}
             </div>
           </div>
