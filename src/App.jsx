@@ -1,14 +1,27 @@
 import { useState } from "react";
-import Products from "./components/Products/ProductListing";
-import Sidebar from "./components/Sidebar/Sidebar";
+import ProductFilters from "./components/Products/ProductFilters";
+import productsData from "./data/products.json";
 
 function App() {
-  const [count, setCount] = useState(0);
+  const [products, setProducts] = useState(productsData); // initial state for products is an empty array
+
+  const handleFilter = (filteredProducts) => {
+    setProducts(filteredProducts);
+  };
 
   return (
-    <div className="flex justify-between w-screen h-screen bg-gray-300 p-5">
-      <Sidebar />
-      <Products />
+    <div>
+      <ProductFilters products={products} onFilter={handleFilter} />
+      {products.map((product) => (
+        <div key={product.id}>
+          <img src={product.picture} alt={product.name} />
+          <p>{product.name}</p>
+          <p>{product.price}</p>
+          <p>{product.size}</p>
+          <p>{product.brand}</p>
+          <p>{product.idealFor}</p>
+        </div>
+      ))}
     </div>
   );
 }
