@@ -10,7 +10,7 @@ const Sidebar = ({
   setProducts,
 }) => {
   return (
-    <div className="w-1/5 bg-gray-200 rounded">
+    <div className="w-1/5 max-h-[90vh] bg-gray-200 rounded">
       <span className="flex items-center justify-evenly p-2">
         <span className="text-lg font-medium">Filters</span>
         <Button size="sm" variant="outline-danger">
@@ -19,7 +19,7 @@ const Sidebar = ({
       </span>
       <hr />
       <div className="pl-3">
-        <span>Brands</span>
+        <span className="font-bold pb-1">Brands</span>
         {products.map((brand) => (
           <div key={brand.id}>
             <input type="checkbox" name={brand.brand} value={brand.brand} />
@@ -27,8 +27,8 @@ const Sidebar = ({
           </div>
         ))}
       </div>
-      <div className="sidebar__categories">
-        <span>Sizes</span>
+      <div className="pl-3">
+        <span className="font-bold pb-1">Sizes</span>
         {["S", "M", "L", "XL"].map((prod) => (
           <div
             key={prod}
@@ -42,8 +42,8 @@ const Sidebar = ({
           </div>
         ))}
       </div>
-      <div className="sidebar__categories">
-        <span>Ideal for</span>
+      <div className="pl-3">
+        <span className="font-bold pb-1">Ideal for</span>
         {["Men", "Women", "Girl", "Kids"].map((prod) => (
           <div
             key={prod}
@@ -57,7 +57,9 @@ const Sidebar = ({
           </div>
         ))}
       </div>
-      <Button variant="outline-primary">Filter</Button>
+      <Button className="m-3" variant="outline-primary">
+        Filter
+      </Button>
     </div>
   );
 };
