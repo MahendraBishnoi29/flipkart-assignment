@@ -1,4 +1,3 @@
-import { useState } from "react";
 import ProductCard from "./components/Products/ProductCard";
 import Sidebar from "./components/Sidebar/Sidebar";
 import { products } from "./data/products";
