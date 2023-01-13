@@ -1,6 +1,9 @@
+import { useProducts } from "../../store/products";
 import React from "react";
 
-const ProductCard = ({ products }) => {
+const ProductCard = () => {
+  const { products } = useProducts();
+
   return (
     <div className="w-3/4 max-h-[90vh] flex flex-wrap gap-1 p-1 overflow-y-scroll">
       {products?.map((product) => (
@@ -12,7 +15,7 @@ const ProductCard = ({ products }) => {
             src={product.image}
             className="h-64 w-64 object-contain"
             alt={product.name}
-          />{" "}
+          />
           <div className="flex flex-col p-1">
             <p className="font-medium text-gray-400">{product.brand}</p>
             <span className="text-lg">
@@ -25,10 +28,10 @@ const ProductCard = ({ products }) => {
                 </span>
               )}
             </span>
-            <span className="font-bold">₹{product?.price}</span>{" "}
+            <span className="font-bold">₹{product?.price}</span>
             <div>
               <span className="font-medium text-gray-500">SIZE: </span>
-              {product.size.map((m) => `${m}, `)}
+              {product.size}
             </div>
           </div>
         </div>
