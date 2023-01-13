@@ -20,12 +20,19 @@ const ProductsProvider = ({ children }) => {
     return isBrandIn && isSizesIn && isIdealIn;
   });
 
+  const clearAllFilters = () => {
+    setActiveBrands([]);
+    setActiveSizes([]);
+    setActiveIdeals([]);
+  };
+
   return (
     <ProductsContext.Provider
       value={{
         setActiveBrands,
         setActiveIdeals,
         setActiveSizes,
+        clearAllFilters,
         products: filteredProducts,
       }}
     >
