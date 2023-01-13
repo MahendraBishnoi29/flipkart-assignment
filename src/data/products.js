@@ -101,16 +101,6 @@ export const products = [
   },
 ];
 
-// export const products = arr.map((item) => ({
-//   id: item.id,
-//   name: item.name,
-//   price: item.price,
-//   size: item.size,
-//   brand: item.brand,
-//   idealFor: item.idealFor,
-//   image: item.image,
-// }));
-
 export const sortBy = [
   {
     id: 1,
