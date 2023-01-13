@@ -4,7 +4,8 @@ import { products as originalProducts } from "../../data/products";
 import { useProducts } from "../../store/products";
 
 const Sidebar = () => {
-  const { setActiveBrands, setActiveSizes, setActiveIdeals } = useProducts();
+  const { setActiveBrands, setActiveSizes, setActiveIdeals, clearAllFilters } =
+    useProducts();
 
   const handleCheckBoxChecked = (event, callback) => {
     if (event.target.checked) {
@@ -14,14 +15,15 @@ const Sidebar = () => {
     }
   };
 
+  // remove duplicate brands coz some products may have same brands
   const brands = [...new Set(originalProducts?.map((p) => p.brand))];
 
   return (
     <div className="w-1/5 max-h-[85vh] bg-gray-200 rounded">
       <span className="flex items-center justify-evenly p-2">
         <span className="text-lg font-medium">Filters</span>
-        <Button size="sm" variant="outline-danger">
-          Clear all
+        <Button size="sm" variant="outline-danger" onClick={clearAllFilters}>
+          Clear all Filters
         </Button>
       </span>
       <hr />
