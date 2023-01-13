@@ -1,14 +1,9 @@
 import React from "react";
 import { Button } from "react-bootstrap";
 
-const Sidebar = ({
-  products,
-  setsortValue,
-  setFilterValues,
-  filterValues,
-  sortValue,
-  setProducts,
-}) => {
+const Sidebar = ({ products }) => {
+  const brands = [...new Set(products?.map((p) => p.brand))];
+
   return (
     <div className="w-1/5 max-h-[90vh] bg-gray-200 rounded">
       <span className="flex items-center justify-evenly p-2">
@@ -20,10 +15,10 @@ const Sidebar = ({
       <hr />
       <div className="pl-3">
         <span className="font-bold pb-1">Brands</span>
-        {products.map((brand) => (
-          <div key={brand.id}>
-            <input type="checkbox" name={brand.brand} value={brand.brand} />
-            <label className="mx-2">{brand.brand}</label>
+        {brands?.map((brand) => (
+          <div key={brand}>
+            <input type="checkbox" name={brand} value={brand} />
+            <label className="mx-2">{brand}</label>
           </div>
         ))}
       </div>
