@@ -5,37 +5,35 @@ const ProductCard = () => {
   const { products } = useProducts();
 
   return (
-    <div className="w-3/4 max-h-[90vh] flex flex-wrap gap-1 p-1 overflow-y-scroll">
-      {products?.map((product) => (
-        <div
-          className="w-1/4 mx-auto p-1 cursor-pointer mb-3 bg-white rounded-2xl overflow-hidden shadow-xl"
-          key={product.id}
-        >
-          <img
-            src={product.image}
-            className="h-64 w-64 object-contain"
-            alt={product.name}
-          />
-          <div className="flex flex-col p-1">
-            <p className="font-medium text-gray-400">{product.brand}</p>
-            <span className="text-lg">
-              {product.name?.length < 23 ? (
-                product.name
-              ) : (
-                <span>
-                  {product.name?.substring(0, 23)}
-                  ...
-                </span>
-              )}
-            </span>
-            <span className="font-bold">₹{product?.price}</span>
-            <div>
-              <span className="font-medium text-gray-500">SIZE: </span>
-              {product.size}
+    <div className="w-2/3 md:w-3/4 max-h-screen overflow-y-auto">
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-4 overflow-y-scroll">
+        {products?.map((product) => (
+          <div
+            key={product.id}
+            className="cursor-pointer mb-3 bg-white rounded-lg overflow-hidden shadow-md"
+            onClick={() => handleProductClick(product.id)}
+          >
+            <img
+              src={product.image}
+              className="h-64 w-full object-cover"
+              alt={product.name}
+            />
+            <div className="flex flex-col p-3">
+              <p className="text-gray-600">{product.brand}</p>
+              <h3 className="text-lg font-medium">
+                {product.name?.length < 23
+                  ? product.name
+                  : `${product.name?.substring(0, 23)}...`}
+              </h3>
+              <p className="text-gray-600">
+                <span className="font-medium">SIZE: </span>
+                {product.size}
+              </p>
+              <p className="font-medium text-gray-800">₹{product?.price}</p>
             </div>
           </div>
-        </div>
-      ))}
+        ))}
+      </div>
     </div>
   );
 };
