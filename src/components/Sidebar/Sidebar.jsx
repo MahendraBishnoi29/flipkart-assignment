@@ -19,10 +19,15 @@ const Sidebar = () => {
   const brands = [...new Set(originalProducts?.map((p) => p.brand))];
 
   return (
-    <div className="w-1/5 max-h-[85vh] bg-gray-200 rounded">
+    <div className="w-[23%] max-h-screen bg-gray-200 rounded">
       <span className="flex items-center justify-evenly p-2">
         <span className="text-lg font-medium">Filters</span>
-        <Button size="sm" variant="outline-danger" onClick={clearAllFilters}>
+        <Button
+          className="md:p-1"
+          size="m"
+          variant="outline-danger"
+          onClick={clearAllFilters}
+        >
           Clear all Filters
         </Button>
       </span>
@@ -84,10 +89,16 @@ const Sidebar = () => {
             <label className="mx-2">{prod}</label>
           </div>
         ))}
-
-        <div className="pl-3">
-          <span className="font-bold pb-1">Price High To Low</span>
+      </div>
+      <div className="pl-3">
+        <span className="font-bold pb-1">Price</span>
+        <div className="flex items-center">
           <input type="checkbox" />
+          <label>High To Low</label>
+        </div>
+        <div className="flex items-center">
+          <input type="checkbox" />
+          <label>Low To High</label>
         </div>
       </div>
     </div>
