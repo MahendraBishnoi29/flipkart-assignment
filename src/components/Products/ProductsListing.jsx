@@ -1,7 +1,7 @@
 import { useProducts } from "../../store/products";
 import React from "react";
 
-const ProductCard = () => {
+const ProductsListing = () => {
   const { products } = useProducts();
 
   return (
@@ -38,4 +38,4 @@ const ProductCard = () => {
   );
 };
 
-export default ProductCard;
+export default ProductsListing;

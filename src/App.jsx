@@ -1,4 +1,4 @@
-import ProductCard from "./components/Products/ProductsListing";
+import ProductsListing from "./components/Products/ProductsListing";
 import Sidebar from "./components/Sidebar/Sidebar";
 import { products } from "./data/products";
 import ProductsProvider from "./store/products";
@@ -9,7 +9,7 @@ function App() {
       <ProductsProvider>
         <div className="p-4 flex justify-between">
           <Sidebar />
-          <ProductCard products={products} />
+          <ProductsListing products={products} />
         </div>
       </ProductsProvider>
     </div>
