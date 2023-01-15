@@ -7,7 +7,7 @@ function App() {
   return (
     <div className="flex bg-gray-600">
       <ProductsProvider>
-        <div className="p-4 flex">
+        <div className="p-4 flex justify-between">
           <Sidebar />
           <ProductCard products={products} />
         </div>
