@@ -9,6 +9,7 @@ const ProductsProvider = ({ children }) => {
   const [activeBrands, setActiveBrands] = useState([]);
   const [activeSizes, setActiveSizes] = useState([]);
   const [activeIdeals, setActiveIdeals] = useState([]);
+  const [sortMethod, setSortMethod] = useState("");
 
   let filteredProducts = products.filter((p) => {
     const isBrandIn =
@@ -20,10 +21,17 @@ const ProductsProvider = ({ children }) => {
     return isBrandIn && isSizesIn && isIdealIn;
   });
 
+  if (sortMethod === "price-high-to-low") {
+    filteredProducts.sort((a, b) => b.price - a.price);
+  } else if (sortMethod === "price-low-to-high") {
+    filteredProducts.sort((a, b) => a.price - b.price);
+  }
+
   const clearAllFilters = () => {
     setActiveBrands([]);
     setActiveSizes([]);
     setActiveIdeals([]);
+    setSortMethod("");
   };
 
   return (
@@ -32,6 +40,7 @@ const ProductsProvider = ({ children }) => {
         setActiveBrands,
         setActiveIdeals,
         setActiveSizes,
+        setSortMethod,
         clearAllFilters,
         products: filteredProducts,
       }}
