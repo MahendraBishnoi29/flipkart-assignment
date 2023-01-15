@@ -1,4 +1,4 @@
-import ProductCard from "./components/Products/ProductCard";
+import ProductCard from "./components/Products/ProductsListing";
 import Sidebar from "./components/Sidebar/Sidebar";
 import { products } from "./data/products";
 import ProductsProvider from "./store/products";
