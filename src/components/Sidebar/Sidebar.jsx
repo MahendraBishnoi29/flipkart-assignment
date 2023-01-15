@@ -4,8 +4,14 @@ import { products as originalProducts } from "../../data/products";
 import { useProducts } from "../../store/products";
 
 const Sidebar = () => {
-  const { setActiveBrands, setActiveSizes, setActiveIdeals, clearAllFilters } =
-    useProducts();
+  const {
+    setActiveBrands,
+    setActiveSizes,
+    setActiveIdeals,
+    setSortMethod,
+    clearAllFilters,
+  } = useProducts();
+  const [sortMethod, setSortMethodState] = useState("");
 
   const handleCheckBoxChecked = (event, callback) => {
     if (event.target.checked) {
@@ -93,11 +99,23 @@ const Sidebar = () => {
       <div className="pl-3">
         <span className="font-bold pb-1">Price</span>
         <div className="flex items-center">
-          <input type="checkbox" />
+          <input
+            type="checkbox"
+            onChange={() => {
+              setSortMethodState("price-high-to-low");
+              setSortMethod("price-high-to-low");
+            }}
+          />
           <label>High To Low</label>
         </div>
         <div className="flex items-center">
-          <input type="checkbox" />
+          <input
+            type="checkbox"
+            onChange={() => {
+              setSortMethodState("price-low-to-high");
+              setSortMethod("price-low-to-high");
+            }}
+          />
           <label>Low To High</label>
         </div>
       </div>
