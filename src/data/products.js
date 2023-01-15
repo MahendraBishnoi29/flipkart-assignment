@@ -100,16 +100,3 @@ export const products = [
       "https://encrypted-tbn3.gstatic.com/shopping?q=tbn:ANd9GcQxo4nqeO-q9o9CAiED0IMGMY9jF18t-kxU4IrVADX4tr4eCnl1HeyGdd6OgHcBUlQ0EyXnKehXmF2jNGdUtc8nKfZR6MrFtIT7BnLdbW5Fe7ynFbDUFCh6c-A&usqp=CAE",
   },
 ];
-
-export const sortBy = [
-  {
-    id: 1,
-    name: "Price -- Low to High",
-    type: -1,
-  },
-  {
-    id: 2,
-    name: "Price -- High to Low",
-    type: 1,
-  },
-];
