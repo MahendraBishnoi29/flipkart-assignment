@@ -6,12 +6,15 @@ import { useProducts } from "../../store/products";
 const Sidebar = () => {
   const {
     setActiveBrands,
+    activeBrands,
+    activeSizes,
     setActiveSizes,
+    activeIdeals,
     setActiveIdeals,
     setSortMethod,
-    clearAllFilters,
   } = useProducts();
-  const [sortMethod, setSortMethodState] = useState("");
+
+  const [sortMethodState, setSortMethodState] = useState();
 
   const handleCheckBoxChecked = (event, callback) => {
     if (event.target.checked) {
@@ -21,22 +24,36 @@ const Sidebar = () => {
     }
   };
 
+  const clearAllFilters = () => {
+    setActiveBrands([]);
+    setActiveSizes([]);
+    setActiveIdeals([]);
+    setSortMethod();
+    setSortMethodState();
+  };
+
+  const handleFilterProducts = () => {
+    setSortMethod(sortMethodState);
+  };
+
+  console.log(sortMethodState);
+
   // remove duplicate brands coz some products may have same brands
   const brands = [...new Set(originalProducts?.map((p) => p.brand))];
 
   return (
-    <div className="w-[23%] max-h-screen bg-gray-200 rounded">
-      <span className="flex items-center justify-evenly p-2">
-        <span className="text-lg font-medium">Filters</span>
+    <div className="max-h-[50rem] bg-gray-200 rounded overflow-hidden">
+      <div className="p-2">
+        <span className="mr-3">Filters</span>
         <Button
-          className="md:p-1"
+          className="sm:p-0 p-1"
           size="m"
           variant="outline-danger"
           onClick={clearAllFilters}
         >
           Clear all Filters
         </Button>
-      </span>
+      </div>
       <hr />
       <div className="pl-3">
         <span className="font-bold pb-1">Brands</span>
@@ -45,6 +62,7 @@ const Sidebar = () => {
             <input
               type="checkbox"
               name={brand}
+              checked={activeBrands.includes(brand)}
               value={brand}
               onChange={(event) =>
                 handleCheckBoxChecked(event, setActiveBrands)
@@ -68,12 +86,14 @@ const Sidebar = () => {
               type="checkbox"
               name={prod}
               value={prod}
+              checked={activeSizes.includes(prod)}
               onChange={(event) => handleCheckBoxChecked(event, setActiveSizes)}
             />
             <label className="mx-2">{prod}</label>
           </div>
         ))}
       </div>
+
       <div className="pl-3">
         <span className="font-bold pb-1">Ideal for</span>
         {["Men", "Women", "Kids"].map((prod) => (
@@ -88,6 +108,7 @@ const Sidebar = () => {
               type="checkbox"
               name={prod}
               value={prod}
+              checked={activeIdeals.includes(prod)}
               onChange={(event) =>
                 handleCheckBoxChecked(event, setActiveIdeals)
               }
@@ -96,28 +117,34 @@ const Sidebar = () => {
           </div>
         ))}
       </div>
+
       <div className="pl-3">
         <span className="font-bold pb-1">Price</span>
         <div className="flex items-center">
           <input
-            type="checkbox"
+            type="radio"
             onChange={() => {
               setSortMethodState("price-high-to-low");
-              setSortMethod("price-high-to-low");
             }}
+            checked={sortMethodState === "price-high-to-low"}
+            id="price-high-to-low"
+            name="priceFilter"
           />
-          <label>High To Low</label>
+          <label htmlFor="price-high-to-low">High To Low</label>
         </div>
         <div className="flex items-center">
           <input
-            type="checkbox"
+            type="radio"
             onChange={() => {
               setSortMethodState("price-low-to-high");
-              setSortMethod("price-low-to-high");
             }}
+            checked={sortMethodState === "price-low-to-high"}
+            name="priceFilter"
+            id="price-low-to-high"
           />
-          <label>Low To High</label>
+          <label htmlFor="price-low-to-high">Low To High</label>
         </div>
+        <Button onClick={handleFilterProducts}>Set</Button>
       </div>
     </div>
   );
