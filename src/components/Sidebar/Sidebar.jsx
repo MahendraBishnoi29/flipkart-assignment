@@ -36,8 +36,6 @@ const Sidebar = () => {
     setSortMethod(sortMethodState);
   };
 
-  console.log(sortMethodState);
-
   // remove duplicate brands coz some products may have same brands
   const brands = [...new Set(originalProducts?.map((p) => p.brand))];
 
@@ -130,7 +128,9 @@ const Sidebar = () => {
             id="price-high-to-low"
             name="priceFilter"
           />
-          <label htmlFor="price-high-to-low">High To Low</label>
+          <label className="ml-2" htmlFor="price-high-to-low">
+            High To Low
+          </label>
         </div>
         <div className="flex items-center">
           <input
@@ -142,9 +142,17 @@ const Sidebar = () => {
             name="priceFilter"
             id="price-low-to-high"
           />
-          <label htmlFor="price-low-to-high">Low To High</label>
+          <label className="ml-2" htmlFor="price-low-to-high">
+            Low To High
+          </label>
         </div>
-        <Button onClick={handleFilterProducts}>Set</Button>
+        <Button
+          variant="outline-primary"
+          className="m-2"
+          onClick={handleFilterProducts}
+        >
+          Set
+        </Button>
       </div>
     </div>
   );

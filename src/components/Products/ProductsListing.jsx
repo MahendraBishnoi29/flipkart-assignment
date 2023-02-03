@@ -23,10 +23,15 @@ const ProductsListing = () => {
     filteredProducts.sort((a, b) => a.price - b.price);
   }
 
-  if (filteredProducts.length === 0) return <p>No products found</p>;
+  if (filteredProducts.length === 0)
+    return (
+      <h1 className="text-4xl text-indigo-50 text-center">
+        No products found!
+      </h1>
+    );
 
   return (
-    <div className="overflow-y-scroll h-[76vh]">
+    <div className="overflow-y-scroll h-[81.5vh] custom-scrollbar">
       <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
         {filteredProducts?.map((product) => (
           <div
