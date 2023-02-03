@@ -1,13 +1,34 @@
 import { useProducts } from "../../store/products";
+import { products } from "../../data/products";
+
 import React from "react";
 
 const ProductsListing = () => {
-  const { products } = useProducts();
+  const { activeBrands, activeSizes, activeIdeals, sortMethod } = useProducts();
+
+  let filteredProducts = products.filter((p) => {
+    console.log(activeBrands);
+    const isBrandIn =
+      activeBrands.length <= 0 ? true : activeBrands.includes(p.brand);
+    const isSizesIn =
+      activeSizes.length <= 0 ? true : activeSizes.includes(p.size);
+    const isIdealIn =
+      activeIdeals.length <= 0 ? true : activeIdeals.includes(p.idealFor);
+    return isBrandIn && isSizesIn && isIdealIn;
+  });
+
+  if (sortMethod === "price-high-to-low") {
+    filteredProducts.sort((a, b) => b.price - a.price);
+  } else if (sortMethod === "price-low-to-high") {
+    filteredProducts.sort((a, b) => a.price - b.price);
+  }
+
+  if (filteredProducts.length === 0) return <p>No products found</p>;
 
   return (
-    <div className="w-2/3 md:w-3/4 max-h-screen overflow-y-auto">
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-4 overflow-y-scroll">
-        {products?.map((product) => (
+    <div className="overflow-y-scroll h-[76vh]">
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+        {filteredProducts?.map((product) => (
           <div
             key={product.id}
             className="cursor-pointer mb-3 bg-white rounded-lg overflow-hidden shadow-md"
