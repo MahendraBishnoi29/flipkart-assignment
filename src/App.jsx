@@ -1,17 +1,19 @@
 import ProductsListing from "./components/Products/ProductsListing";
 import Sidebar from "./components/Sidebar/Sidebar";
 import { products } from "./data/products";
-import ProductsProvider from "./store/products";
+import NewProductsProvider from "./store/products";
 
 function App() {
   return (
-    <div className="flex bg-gray-600">
-      <ProductsProvider>
-        <div className="p-4 flex justify-between">
+    <div className="flex h-screen flex-col md:flex-row p-4 bg-gray-600">
+      <NewProductsProvider>
+        <div className="md:w-1/4 sm:w-2/4 mr-5 sm:mb-5">
           <Sidebar />
+        </div>
+        <div className="flex-1">
           <ProductsListing products={products} />
         </div>
-      </ProductsProvider>
+      </NewProductsProvider>
     </div>
   );
 }
