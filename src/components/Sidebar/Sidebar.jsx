@@ -72,7 +72,7 @@ const Sidebar = () => {
       </div>
       <div className="pl-3">
         <span className="font-bold pb-1">Sizes</span>
-        {["S", "M", "L", "XL"].map((prod) => (
+        {["S", "M", "L", "XL", "XS"].map((prod) => (
           <div
             key={prod}
             style={{
